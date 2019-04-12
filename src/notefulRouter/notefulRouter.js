@@ -39,9 +39,9 @@ notefulRouter
     
         const folders = {name};
     
-        notefulService.addNote(req.app.get('db'),folders)
+        notefulService.addFolder(req.app.get('db'),folders)
           .then(folder =>{
-            res.status(201).location(path.posix.join(req.originalUrl,`${folder.id}`)).json(cleanNotes(note));
+            res.status(201).location(path.posix.join(req.originalUrl,`${folder.id}`)).json(cleanFolders(folder));
           })
           .catch(next);
     });
@@ -73,16 +73,11 @@ notefulRouter
     });
 
 notefulRouter
-    .route('api/folder/:id')
-    .get((req,res)=>{
-        //get all notes for that folder
-    })
-
-notefulRouter
-    .route('api/notes/:id')
+    .route('/api/notes/:id')
     .delete((req, res, next) => {
         const { id } = req.params;
-        notefulRouter.deleteNote(req.app.get('db'),id)
+        console.log(id);
+        notefulService.deleteNote(req.app.get('db'),id)
             .then(() =>{
             logger.info(`Bookmark with id ${id} deleted.`);
             res.status(204).end();
