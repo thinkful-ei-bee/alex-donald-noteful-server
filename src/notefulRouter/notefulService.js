@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const notefulService ={
   getAllFolders(knex){
     return knex.select('*').from('noteful_folders');
