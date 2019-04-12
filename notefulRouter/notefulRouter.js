@@ -21,4 +21,44 @@ const cleanFolders = folder =>({
     name:xss(folder.name),
   });
 
-bookmarksRouter
+notefulRouter
+    .route('/')
+    .get((req,res)=>{
+        //get all folders/notes
+    })
+notefulRouter
+    .route('/api/folder')
+    .get((req,res)=>{
+      //get all folders
+    })
+    .post((req,res)=>{
+        //add folder
+    })
+
+notefulRouter
+    .route('/api/notes')
+    .get((req,res)=>{
+        //get all notes
+    })
+    .post((req,res)=>{
+        //add note
+    })
+
+notefulRouter
+    .route('api/folder/:id')
+    .get((req,res)=>{
+        //get all notes for that folder
+    })
+
+notefulRouter
+    .route('api/notes/:id')
+    .get(()=>{
+
+    })
+    .delete(()=>{
+
+    })
+
+
+module.exports = notefulRouter;
+
